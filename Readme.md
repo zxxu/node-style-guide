@@ -17,7 +17,8 @@ according to your preferences.
 
 ## Table of contents
 
-* [1 Tab for indention](#2-spaces-for-indention)
+* [Check for errors](#check-for-errors)
+* [1 Tab for indention](#1-tab-for-indention)
 * [Newlines](#newlines)
 * [No trailing whitespace](#no-trailing-whitespace)
 * [Use Semicolons](#use-semicolons)
@@ -31,10 +32,15 @@ according to your preferences.
 * [Use UPPERCASE for Constants](#use-uppercase-for-constants)
 * [Object / Array creation](#object--array-creation)
 * [Use the === operator](#use-the--operator)
+* [Avoid excessive closures](avoid-excessive-closures)
 * [Use multi-line ternary operator](#use-multi-line-ternary-operator)
 * [Use slashes for comments](#use-slashes-for-comments)
 * [Object.freeze, Object.preventExtensions, Object.seal, with, eval](#objectfreeze-objectpreventextensions-objectseal-with-eval)
 * [Getters and setters](#getters-and-setters)
+
+## Check for errors
+
+Rule #1 of writing server code is that everything will fail sometime. All callbacks should be written in the form function(err,result). Code should check for errors or missing results.
 
 ## 1 Tab for indention
 
@@ -305,6 +311,10 @@ if (a == '') {
 ```
 
 [comparisonoperators]: https://developer.mozilla.org/en/JavaScript/Reference/Operators/Comparison_Operators
+
+## Avoid excessive closures
+
+Avoid excessive closures. Creating temporary functions that don't require local variables make the parent function larger an will cause excessive memory allocation. Move helper functions out when possible. Same thing goes for constants. Constants should be at the top of the file or even better in the config files.
 
 ## Use multi-line ternary operator
 
